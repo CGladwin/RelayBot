@@ -1,0 +1,33 @@
+Name Ideas:
+Sicily (likely choice) 
+Salem
+command prefix = "/"
+
+*sean's tips*
+
+
+
+commands (WIP):
+General
+/sicily - enters setup mode
+/commands - displays valid commands
+/roles - shows all possible roles for party sizes (only player so far)
+/role [char name] - shows character description for specific character
+
+Setup Mode
+/join - joins party
+/leave - leaves party
+/current - shows current settings (lists players and possible characters)
+/start - starts game with current settings
+
+In-game
+/day [number of day] - see the known events that happened in a day (votes counts)
+/night [number of night] - see the known events that happened in a night (who was killed/eliminated/healed)
+
+Bot DM
+/w @[player] [content] - whispers the message to the player
+/info - lists role, win conditions, abilities, ability usage history (possibly a reminder of basic rules)
+/tip - lists deductions that can be made (e.g. "you are the vengeful detective so you know there are no other villagers)
+
+
+commands completed:

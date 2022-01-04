@@ -1,0 +1,1 @@
+Discord's Python API has been depreciated, and as a result this bot may lose functionality. I am uploading this for completeness.

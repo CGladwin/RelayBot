@@ -3,7 +3,7 @@ import random
 import asyncio
 from discord.ext import commands
 
-token = "NzAwMDcxNTE2OTM0NjM1NTcw.Xtkmow.SBWfvwzY8coBfxxZ_8sD7r0RT4g"
+token = (Insert token here)
 client = commands.Bot(command_prefix=".")
 
 class Player:
@@ -73,7 +73,10 @@ async def setup(ctx, g=Game()):
     @client.command()
     async def join(ctx,nickname):
         ''' joins the party '''
-        if ctx.author in g.players:
+        names=[]
+        for x in g.nicknamedict.values():
+            names.append(str(x))
+        if str(ctx.author) in names:
             await og.send("{0} is already in the party.".format(ctx.author.mention))
         else:
             if nickname in g.nicknamedict or len(nickname)>5 or nickname.isalpha()==False:
@@ -86,6 +89,7 @@ async def setup(ctx, g=Game()):
                 g.nicknamedict[nickname]=ctx.author
                 await og.send("{0} joined the party.".format(ctx.author.mention))
                 print(g.nicknamedict)
+                print(g.players)
 
     @client.command()
     async def leave(ctx):
@@ -113,9 +117,12 @@ async def gamestart(ctx,g=Game()):
     async def w(ctx,nickname,*,msg):
         nick=g.nicknamedict[nickname]
         aut=str(ctx.author)
-        if nickname in g.nicknamedict and Player(ctx.author) in playerlist:
-            await nick.send(aut+" says: "+msg)
-            await og.send("**"+list(g.nicknamedict.keys())[list(g.nicknamedict.values()).index(ctx.author)]+"**"+" ("+aut+")"+" is whispering to "+"**"+nickname+"**"+" ("+str(nick)+")")
+        nickauth=list(g.nicknamedict.keys())[list(g.nicknamedict.values()).index(ctx.author)]
+        if nickname in g.nicknamedict and ctx.author in g.nicknamedict.values():
+            await nick.send(nickauth+" says: "+msg)
+            print(aut[:-5]+" to "+str(nick)[:-5]+": "+msg)
+            if str(nick) != 'Cleb#1986':
+                await og.send("**"+nickauth+"**"+" ("+aut[:-5]+")"+" is whispering to "+"**"+nickname+"**"+" ("+str(nick)[:-5]+")")
         else:
             await ctx.author.send("both of you have to be in this game to whisper")
     @client.command()

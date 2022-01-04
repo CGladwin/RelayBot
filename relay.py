@@ -3,7 +3,7 @@ import random
 import asyncio
 from discord.ext import commands
 
-token = "NzAwMDcxNTE2OTM0NjM1NTcw.Xtkmow.SBWfvwzY8coBfxxZ_8sD7r0RT4g"
+token = "your token here"
 client = commands.Bot(command_prefix=".")
 
 class Player:
